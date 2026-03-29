@@ -2,7 +2,7 @@
 #include<time.h>
 #include<math.h>
 
-const int N = 1000;// 多项式最大项数
+const int N = 100;// 多项式最大项数
 const int n = 1e7;// 计算的次数
 
 clock_t start, end;
@@ -17,8 +17,9 @@ int main()
 {
     double a[N];// 多项式的系数
     double x = 1.1;// 多项式的自变量
-    for(int i = 0; i < N; i++)
-        a[i] = (double)i;
+    a[0] = 1.0;
+    for(int i = 1; i < N; i++)
+        a[i] = 1.0 / i;
 
     run_f(f1, a, x);
     run_f(f2, a, x);
