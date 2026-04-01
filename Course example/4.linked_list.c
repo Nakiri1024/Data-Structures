@@ -4,9 +4,6 @@
 
 #define NotFound NULL
 typedef int ElementType;
-typedef int Position;
-
-
 
 
 // 通过链式存储方式实现线性表，带头结点
@@ -18,7 +15,7 @@ typedef struct LNode{
 
 
  
-// 初始化顺序表， 返回头结点
+// 初始化线性表， 返回头结点
 List MakeEmpty(){
     List L;
     L = (List)malloc(sizeof(struct LNode));
