@@ -1,5 +1,5 @@
 #include<stdio.h>
-#include<malloc.h>
+#include<stdlib.h>
 #include<stdbool.h>
 
 #define MAXSIZE 100 
