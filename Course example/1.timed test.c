@@ -2,11 +2,9 @@
 #include<time.h>
 #include<math.h>
 
-const int N = 100;// 多项式最大项数
-const int n = 1e7;// 计算的次数
+static const int N = 100;// 多项式最大项数
+static const int n = 1e7;// 计算的次数
 
-clock_t start, end;
-double duration;
 
 
 double f1(int n, double a[], double x);
@@ -45,6 +43,8 @@ double f2(int n, double a[], double x)
 }
 
 void run_f(double (*f)(int, double*, double), double a[], double x){
+    clock_t start, end;
+    double duration;
     start = clock();
     for(int i = 0; i < n; i++)
         f(N -1, a, x);
