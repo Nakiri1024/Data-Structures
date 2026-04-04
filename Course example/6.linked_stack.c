@@ -42,3 +42,12 @@ bool Pop(Stack S, ElementType* x) {
     free(temp);
     return true;
 }
+
+// 栈顶
+bool Top(Stack S, ElementType* x){
+    if(IsEmpty(S)){
+        return false;
+    }
+    *x = S->next->data;
+    return true;
+}

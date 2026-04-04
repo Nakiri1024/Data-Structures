@@ -51,3 +51,12 @@ bool Pop(Stack S, ElementType* X){
     *X = S->Data[(S->Top)--];
     return true;
 }
+
+// 栈顶
+bool Top(Stack S, ElementType* X){
+    if(IsEmpty(S)){
+        return false;
+    }
+    *X = S->Data[S->Top];
+    return true;
+}

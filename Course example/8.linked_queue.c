@@ -13,7 +13,14 @@ typedef struct QNode {
 typedef struct {
     Position front;  // 队头
     Position rear;   // 队尾
-} *Queue;
+} *Queue, QueueStruct;
+
+// 创建队列
+Queue CreateQueue() {
+    Queue Q = (Queue)malloc(sizeof(QueueStruct));
+    Q->front = Q->rear = NULL;
+    return Q;
+}
 
 // 判空
 bool IsEmpty(Queue Q) {
