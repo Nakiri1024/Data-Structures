@@ -53,7 +53,7 @@ bool Pop(Stack S){
 }
 
 // 栈顶
-ElementType Peep(Stack S){
+ElementType Peek(Stack S){
     if(IsEmpty(S)){
         // printf("栈空");
         return -1; // 返回-1表示栈空
@@ -65,7 +65,7 @@ void judge(Stack S, int nums[], int seq[], int N){
     int cur = 1;
     for(int i = 1; i <=N; i++){
         if(Push(S, nums[i])){
-            while(Peep(S) == seq[cur]){ // 如果栈顶元素等于当前序列元素，出栈
+            while(Peek(S) == seq[cur]){ // 如果栈顶元素等于当前序列元素，出栈
                 Pop(S);
                 cur++;
             }

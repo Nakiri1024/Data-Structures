@@ -3,7 +3,7 @@
 #include<stdbool.h>
 
 typedef int TreeElementType;
-typedef TNode ElementType;
+
 
 // 二叉树
 typedef struct TNode{
@@ -11,6 +11,7 @@ typedef struct TNode{
     struct TNode* Left;
     struct TNode* Right;
 } *BinTree, TNode;
+typedef BinTree ElementType;
 
 // 栈
 typedef struct SNode {
@@ -22,11 +23,11 @@ typedef struct SNode {
 typedef struct QNode {
     ElementType data;
     struct QNode* next;
-} QNode, *Position;
+} QNode, *QPosition;
 
 typedef struct {
-    Position front;  // 队头
-    Position rear;   // 队尾
+    QPosition front;  // 队头
+    QPosition rear;   // 队尾
 } *Queue, QueueStruct;
 
 // 栈操作函数声明
@@ -208,7 +209,7 @@ bool Push(Stack S, ElementType x) {
 
 // 出栈
 bool Pop(Stack S, ElementType* x) {
-    if (IsEmpty(S)) {
+    if (IsStackEmpty(S)) {
         return false;
     }
     SNode* temp = S->next;
@@ -220,7 +221,7 @@ bool Pop(Stack S, ElementType* x) {
 
 // 栈顶
 bool Top(Stack S, ElementType* x){
-    if(IsEmpty(S)){
+    if(IsStackEmpty(S)){
         return false;
     }
     *x = S->next->data;
@@ -244,7 +245,7 @@ bool Enqueue(Queue Q, ElementType x) {
     QNode* node = (QNode*)malloc(sizeof(QNode));
     node->data = x;
     node->next = NULL;
-    if (IsEmpty(Q)) {
+    if (IsQueueEmpty(Q)) {
         Q->front = Q->rear = node;
     } else {
         Q->rear->next = node;
@@ -255,13 +256,15 @@ bool Enqueue(Queue Q, ElementType x) {
 
 // 出队
 bool Dequeue(Queue Q, ElementType* x) {
-    if (IsEmpty(Q)) {
+    if (IsQueueEmpty(Q)) {
         return false;
     }
     QNode* temp = Q->front;
     *x = temp->data;
     if (Q->front == Q->rear) { // 只有一个元素，出队后队列变空
         Q->front = Q->rear = NULL;
+    }else{
+        Q->front = Q->front->next; // 更新队头指针
     }
     free(temp);
     return true;

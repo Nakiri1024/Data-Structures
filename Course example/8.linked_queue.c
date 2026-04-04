@@ -8,11 +8,11 @@ typedef int ElementType;
 typedef struct QNode {
     ElementType data;
     struct QNode* next;
-} QNode, *Position;
+} QNode, *QPosition;
 
 typedef struct {
-    Position front;  // 队头
-    Position rear;   // 队尾
+    QPosition front;  // 队头
+    QPosition rear;   // 队尾
 } *Queue, QueueStruct;
 
 // 创建队列
@@ -50,6 +50,8 @@ bool Dequeue(Queue Q, ElementType* x) {
     *x = temp->data;
     if (Q->front == Q->rear) { // 只有一个元素，出队后队列变空
         Q->front = Q->rear = NULL;
+    }else{
+        Q->front = Q->front->next; // 更新队头指针
     }
     free(temp);
     return true;

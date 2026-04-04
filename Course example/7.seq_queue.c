@@ -4,14 +4,14 @@
 
 
 typedef int ElementType;
-typedef int Position;
+typedef int QPosition;
 
 
 // 通过顺序存储方式实现队列
 typedef struct QNode{
    ElementType* Data; 
-   Position Front;  // 队头
-   Position Rear;   // 队尾
+   QPosition Front;  // 队头
+   QPosition Rear;   // 队尾
    int MaxSize;   // 队列的最大容量
 } *Queue;
 
